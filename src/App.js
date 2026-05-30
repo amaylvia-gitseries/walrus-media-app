@@ -33,6 +33,7 @@ function App() {
     <div className="App">
       <h1>🌊 Walrus Media</h1>
       <p>Verified on-chain publishing for memecoin projects</p>
+<div className="badge">🔒 Powered by Walrus + Sui</div>
 
       <div className="publish-form">
         <input placeholder="Your wallet address" value={wallet} onChange={e => setWallet(e.target.value)} />
@@ -44,13 +45,15 @@ function App() {
       </div>
 
       <div className="feed">
-        <h2>📢 Verified Feed</h2>
+        <h2>📢 Verified Feed <span className="post-count">{posts.length} verified {posts.length === 1 ? 'post' : 'posts'}</span></h2>
         {posts.length === 0 && <p>No posts yet. Be the first to publish!</p>}
         {posts.map((post, i) => (
           <div key={i} className="post-card">
             <h3>{post.title}</h3>
             <p>{post.content}</p>
-            <small>{post.verified ? '✓ Verified Sui Wallet' : '⚠ Unverified'} | {post.author} | {new Date(post.timestamp).toLocaleString()}</small>
+            <small className={post.verified ? 'verified' : 'unverified'}>
+  {post.verified ? '✓ Verified Sui Wallet' : '⚠ Unverified'} | {post.author.slice(0,6)}...{post.author.slice(-4)} | {new Date(post.timestamp).toLocaleString()}
+</small>
           </div>
         ))}
       </div>
