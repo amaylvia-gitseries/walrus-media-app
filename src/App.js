@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { publishPost, getPost } from './walrus';
+import { publishPost } from './walrus';
 import { verifyWallet } from './tatum';
 import './App.css';
 
@@ -19,7 +19,8 @@ function App() {
     try {
       const verification = await verifyWallet(wallet);
       const { blobId, post } = await publishPost(title, content, wallet);
-      setPosts([{ ...post, blobId }, ...posts]);
+      const verified = verification.verified;
+      setPosts([{ ...post, blobId, verified }, ...posts]);
       setTitle('');
       setContent('');
       alert('Published! Blob ID: ' + blobId);
