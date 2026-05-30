@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { publishPost, getPost } from './walrus';
+import { verifyWallet } from './tatum';
 import './App.css';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
     }
     setLoading(true);
     try {
+      const verification = await verifyWallet(wallet);
       const { blobId, post } = await publishPost(title, content, wallet);
       setPosts([{ ...post, blobId }, ...posts]);
       setTitle('');
@@ -48,7 +50,7 @@ function App() {
           <div key={i} className="post-card">
             <h3>{post.title}</h3>
             <p>{post.content}</p>
-            <small>✓ Verified On-Chain | {post.author} | {new Date(post.timestamp).toLocaleString()}</small>
+            <small>{post.verified ? '✓ Verified Sui Wallet' : '⚠ Unverified'} | {post.author} | {new Date(post.timestamp).toLocaleString()}</small>
           </div>
         ))}
       </div>
