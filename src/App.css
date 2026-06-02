@@ -1,148 +1,209 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-  background-color: #0a0a0f;
-  color: #e0e0ff;
-  font-family: 'Segoe UI', sans-serif;
+  background: #0a0a0f;
+  color: #fff;
+  font-family: 'Courier New', monospace;
 }
 
-.App {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 40px 20px;
+.landing {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: radial-gradient(ellipse at top, #1a0a2e 0%, #0a0a0f 70%);
 }
 
-h1 {
-  font-size: 2.5rem;
-  background: linear-gradient(90deg, #7b5ea7, #4f8ef7);
+.logo {
+  font-size: 48px;
+  font-weight: 900;
+  background: linear-gradient(135deg, #7c3aed, #3b82f6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 8px;
+  letter-spacing: -2px;
 }
 
-.App > p {
-  color: #8888aa;
-  margin-bottom: 32px;
-  font-size: 1rem;
+.tagline {
+  color: #94a3b8;
+  font-size: 14px;
+  margin-bottom: 48px;
+  text-align: center;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
-.publish-form {
-  background: #12121e;
-  border: 1px solid #2a2a4a;
-  border-radius: 12px;
-  padding: 24px;
-  margin-bottom: 40px;
+.hero-buttons {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  gap: 16px;
+  margin-bottom: 60px;
 }
 
-.publish-form input,
-.publish-form textarea {
-  background: #0a0a1a;
-  border: 1px solid #2a2a4a;
-  border-radius: 8px;
-  padding: 12px;
-  color: #e0e0ff;
-  font-size: 0.95rem;
-  outline: none;
-}
-
-.publish-form input:focus,
-.publish-form textarea:focus {
-  border-color: #7b5ea7;
-}
-
-.publish-form textarea {
-  height: 100px;
-  resize: vertical;
-}
-
-.publish-form button {
-  background: linear-gradient(90deg, #7b5ea7, #4f8ef7);
-  color: white;
+.btn-primary {
+  background: linear-gradient(135deg, #7c3aed, #3b82f6);
+  color: #fff;
   border: none;
+  padding: 14px 32px;
   border-radius: 8px;
-  padding: 14px;
-  font-size: 1rem;
-  font-weight: bold;
+  font-size: 16px;
+  font-family: 'Courier New', monospace;
   cursor: pointer;
+  font-weight: bold;
   transition: opacity 0.2s;
 }
 
-.publish-form button:hover {
-  opacity: 0.85;
+.btn-primary:hover { opacity: 0.85; }
+
+.btn-secondary {
+  background: transparent;
+  color: #7c3aed;
+  border: 1px solid #7c3aed;
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s;
 }
 
-.publish-form button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+.btn-secondary:hover { background: #7c3aed22; }
+
+.stats {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 60px;
 }
 
-.feed h2 {
-  font-size: 1.5rem;
-  color: #7b5ea7;
-  margin-bottom: 20px;
+.stat { text-align: center; }
+.stat-number { font-size: 24px; font-weight: bold; color: #7c3aed; }
+.stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; }
+
+.powered {
+  display: flex;
+  gap: 12px;
+  align-items: center;
 }
 
-.post-card {
-  background: #12121e;
-  border: 1px solid #2a2a4a;
+.badge {
+  background: #1a0a2e;
+  border: 1px solid #7c3aed44;
+  color: #94a3b8;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+/* Publish Page */
+.page {
+  min-height: 100vh;
+  background: radial-gradient(ellipse at top, #1a0a2e 0%, #0a0a0f 70%);
+  padding: 40px 20px;
+}
+
+.page-header {
+  max-width: 600px;
+  margin: 0 auto 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.back-btn {
+  background: none;
+  border: 1px solid #7c3aed44;
+  color: #7c3aed;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+}
+
+.page-logo {
+  font-size: 24px;
+  font-weight: 900;
+  background: linear-gradient(135deg, #7c3aed, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card {
+  background: #0f0f1a;
+  border: 1px solid #7c3aed33;
   border-radius: 12px;
-  padding: 20px;
+  padding: 24px;
+  max-width: 600px;
+  margin: 0 auto 20px;
+}
+
+.card-title {
+  font-size: 13px;
+  color: #7c3aed;
+  text-transform: uppercase;
+  letter-spacing: 2px;
   margin-bottom: 16px;
+}
+
+input, textarea {
+  width: 100%;
+  background: #0a0a0f;
+  border: 1px solid #7c3aed33;
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  margin-bottom: 12px;
+  outline: none;
   transition: border-color 0.2s;
 }
 
-.post-card:hover {
-  border-color: #7b5ea7;
+input:focus, textarea:focus { border-color: #7c3aed; }
+textarea { height: 120px; resize: vertical; }
+
+.feed-card {
+  background: #0f0f1a;
+  border: 1px solid #7c3aed33;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto 12px;
+  transition: border-color 0.2s;
 }
 
-.post-card h3 {
-  font-size: 1.2rem;
-  color: #c0b0ff;
+.feed-card:hover { border-color: #7c3aed; }
+.feed-card h3 { font-size: 16px; margin-bottom: 8px; color: #fff; }
+.feed-card p { font-size: 14px; color: #94a3b8; margin-bottom: 12px; }
+
+.verified-badge {
+  font-size: 11px;
+  color: #3b82f6;
+  display: flex;
+  align-items: center;
+  gap: 6px;
   margin-bottom: 8px;
 }
 
-.post-card p {
-  color: #9090aa;
-  line-height: 1.6;
-  margin-bottom: 12px;
+.verify-link {
+  font-size: 12px;
+  color: #7c3aed;
+  text-decoration: none;
+  letter-spacing: 1px;
 }
 
-.post-card small {
-  color: #5555aa;
-  font-size: 0.8rem;
-}
-.verified {
-  color: #00cc88;
-  font-size: 0.8rem;
+.verify-link:hover { color: #3b82f6; }
+
+.feed-header {
+  max-width: 600px;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.unverified {
-  color: #ff2222;
-  font-size: 0.8rem;
-}
-.badge {
-  display: inline-block;
-  background: linear-gradient(90deg, #1a1a3a, #2a1a4a);
-  border: 1px solid #7b5ea7;
-  border-radius: 20px;
-  padding: 6px 16px;
-  font-size: 0.8rem;
-  color: #9080cc;
-  margin-bottom: 32px;
-}
-.post-count {
-  font-size: 0.85rem;
-  background: #1a1a3a;
-  border: 1px solid #2a2a4a;
-  border-radius: 12px;
-  padding: 4px 12px;
-  color: #7b5ea7;
-  margin-left: 10px;
-}
+.feed-title { font-size: 13px; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; }
+.post-count { background: #7c3aed22; color: #7c3aed; padding: 4px 10px; border-radius: 20px; font-size: 11px; }
