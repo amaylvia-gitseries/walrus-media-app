@@ -1,22 +1,12 @@
-const TATUM_API_KEY = "https://sui-mainnet.gateway.tatum.io";
-const SUI_RPC = "https://sui-mainnet.gateway.tatum.io";
+const TATUM_API_KEY = process.env.REACT_APP_TATUM_API_KEY;
+const BASE_URL = 'https://api.tatum.io/v4';
 
-export async function getSuiBalance(walletAddress) {
-  const response = await fetch(`${SUI_RPC}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'x-api-key': TATUM_API_KEY
-    },
-    body: JSON.stringify({
-      jsonrpc: '2.0',
-      id: 1,
-      method: 'suix_getBalance',
-      params: [walletAddress, '0x2::sui::SUI']
-    })
-  });
-  const data = await response.json();
-  return data.result;
+async function getSuiBalance(walletAddress) {
+  const response = await fetch(
+    `${BASE_URL}/blockchain/sui/account/balance/${walletAddress}`,
+    { headers: { 'x-api-key': TATUM_API_KEY } }
+  );
+  return response.json();
 }
 
 export async function verifyWallet(walletAddress) {
@@ -27,4 +17,13 @@ export async function verifyWallet(walletAddress) {
     balance: balance?.totalBalance || '0',
     network: 'Sui Mainnet'
   };
+}
+
+export async function getWalletHistory(walletAddress) {
+  const response = await fetch(
+    `${BASE_URL}/data/transactions?chain=sui&addresses=${walletAddress}&pageSize=50`,
+    { headers: { 'x-api-key': TATUM_API_KEY } }
+  );
+  const data = await response.json();
+  return data;
 }

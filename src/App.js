@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { publishPost } from './walrus';
 import { verifyWallet } from './tatum';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import VerifyPage from './components/VerifyPage';
 import './App.css';
 
 function App() {
@@ -31,7 +33,11 @@ function App() {
   };
 
   return (
-    <div className="App">
+  <BrowserRouter>
+    <Routes>
+      <Route path="/verify/:walletAddress" element={<VerifyPage />} />
+      <Route path="/" element={
+        <div className="App">
       <h1>🌊 Walrus Media</h1>
       <p>Verified on-chain publishing for memecoin projects</p>
 <div className="badge">🔒 Powered by Walrus + Sui</div>
@@ -49,17 +55,33 @@ function App() {
         <h2>📢 Verified Feed <span className="post-count">{posts.length} verified {posts.length === 1 ? 'post' : 'posts'}</span></h2>
         {posts.length === 0 && <p>No posts yet. Be the first to publish!</p>}
         {posts.map((post, i) => (
-          <div key={i} className="post-card">
-            <h3>{post.title}</h3>
-            <p>{post.content}</p>
-            <small className={post.verified ? 'verified' : 'unverified'}>
-  {post.verified ? '✓ Verified Sui Wallet' : '⚠ Unverified'} | {post.author.slice(0,6)}...{post.author.slice(-4)} | {new Date(post.timestamp).toLocaleString()}
-</small>
-          </div>
+        <div key={i} className="post-card">
+  <h3>{post.title}</h3>
+  <p>{post.content}</p>
+  <small className="verified">
+    ✅ Verified Sui Wallet | {post.author?.slice(0,6)}...{post.author?.slice(-4)} | {new Date(post.timestamp).toLocaleString()}
+  </small>
+  <br/>
+  <a 
+    href={`/verify/${post.author}`}
+    style={{fontSize:'12px', color:'#00ff88', textDecoration:'none'}}
+  >
+    🔍 Verify Wallet →
+  </a>
+</div>  
+            
+            
+            
+  
+
+          
         ))}
       </div>
     </div>
-  );
+      } />
+    </Routes>
+  </BrowserRouter>
+);
 }
 
 export default App;

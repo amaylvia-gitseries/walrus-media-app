@@ -24,3 +24,14 @@ export async function getPost(blobId) {
   const text = await response.text();
   return JSON.parse(text);
 }
+export async function getPostsByWallet(walletAddress) {
+  try {
+    const response = await fetch(
+      `http://localhost:3001/posts/${walletAddress}`
+    );
+    const text = await response.text();
+    return JSON.parse(text);
+  } catch (e) {
+    return [];
+  }
+}
