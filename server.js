@@ -4,7 +4,11 @@ const cors = require('cors');
 const app = express();
 app.use(cors());
 app.use(express.json());
-const posts = [];
+const fs = require('fs');
+const POSTS_FILE = 'posts.json';
+let posts = fs.existsSync(POSTS_FILE)
+   ? JSON.parse(fs.readFileSync(POSTS_FILE, 'utf8'))
+   : [];
 
 const WALRUS_PUBLISHER = "https://publisher.walrus-testnet.walrus.space";
 const WALRUS_AGGREGATOR = "https://aggregator.walrus-testnet.walrus.space";
@@ -25,6 +29,7 @@ app.put('/publish', async (req, res) => {
   author: req.body.walletAddress,
   verified: true
 });
+fs.writeFileSync(POSTS_FILE, JSON.stringify(post));
     
   } catch (err) {
     res.status(500).json({ error: err.message });
