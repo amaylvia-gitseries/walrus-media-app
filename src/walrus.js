@@ -7,7 +7,7 @@ export async function publishPost(title, content, walletAddress) {
     platform: "WalrusMedia"
   };
 
-  const response = await fetch('https://creda-backend-1rcx.onrender.com', {
+  const response = await fetch('https://creda-backend-1rcx.onrender.com/publish', {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(post)
