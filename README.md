@@ -85,7 +85,8 @@ npm start
 App runs on `localhost:3000`
 
 ---
-
+## Live App
+https://credaapp.vercel.app
 ## Live Backend
 https://creda-backend-1rcx.onrender.com
 ---
