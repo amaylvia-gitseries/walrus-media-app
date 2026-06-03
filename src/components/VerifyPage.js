@@ -88,11 +88,11 @@ Give exactly 3 lines:
       <div style={styles.card}>
         <h2 style={styles.cardTitle}>📊 Transaction History ({history.length})</h2>
         {history.slice(0, 10).map((tx, i) => (
-          <div key={i} style={styles.tx}>
-            <p style={styles.txHash}>{tx.transactionHash?.slice(0, 20) || tx.hash?.slice(0, 20) || tx.txId?.slice(0, 20)}...</p>
-            <p style={styles.txDetail}>{tx.timestamp}</p>
-          </div>
-        ))}
+  <div key={i} style={styles.tx}>
+    <p style={styles.txHash}>{typeof tx === 'string' ? tx.slice(0, 20) : tx?.digest?.slice(0, 20)}...</p>
+    <p style={styles.txDetail}>Transaction confirmed on Sui</p>
+  </div>
+))}
       </div>
     </div>
   );
