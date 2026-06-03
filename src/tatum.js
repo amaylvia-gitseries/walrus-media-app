@@ -20,10 +20,29 @@ export async function verifyWallet(walletAddress) {
 }
 
 export async function getWalletHistory(walletAddress) {
-  const response = await fetch(
-    `${BASE_URL}/data/transactions?chain=sui&addresses=${walletAddress}&pageSize=50`,
-    { headers: { 'x-api-key': TATUM_API_KEY } }
-  );
-  const data = await response.json();
-  return data;
+  try {
+    const response = await fetch(
+      `https://sui-mainnet.gateway.tatum.io`,
+      {
+        method: 'POST',
+        headers: {
+          'x-api-key': TATUM_API_KEY,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          jsonrpc: '2.0',
+          id: 1,
+          method: 'suix_getTransactionBlocks',
+          params: [
+            { filter: { FromAddress: walletAddress } },
+            { limit: 10 }
+          ]
+        })
+      }
+    );
+    const data = await response.json();
+    return { data: data.result || [] };
+  } catch (e) {
+    return { data: [] };
+  }
 }
