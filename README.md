@@ -1,70 +1,104 @@
-# Getting Started with Create React App
+# creda
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> Verify your team's credibility on-chain.
 
-## Available Scripts
+Creda is a decentralized publishing platform that solves one of crypto's biggest problems — fake founders and impersonators. Every post is stored permanently on Walrus with a wallet address and timestamp, creating unforgeable proof of authorship. Anyone can verify a team's identity in one click.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## The Problem
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+In the memecoin space, fake founders and vampire accounts are everywhere. When a coin starts pumping, random people claim to be the real team and post fake announcements. There's no way to prove who published first — until now.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## The Solution
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Creda gives every team a permanent, verifiable publishing identity on Sui.
 
-### `npm run build`
+- The real team publishes on Creda → stored on Walrus → returns a Blob ID
+- That Blob ID + wallet address + timestamp = unforgeable proof of authorship
+- Anyone can hit the verify link and instantly see the full picture
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## How It Works
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **Publish** — Team publishes an announcement with their Sui wallet
+2. **Store** — Post is stored permanently on Walrus as a blob
+3. **Verify** — Anyone clicks the verify link to see:
+   - Wallet balance and network confirmation via Tatum Sui RPC
+   - Full on-chain transaction history via Tatum Data API
+   - AI trust analysis — activity level, red flags, trust score out of 10
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Why Creda
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The memecoin space has no trust layer. Anyone can claim to be a founder. Creda fixes this by making authorship provable, permanent, and verifiable in one click. Built for the entire Sui ecosystem — any project can use it.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Tech Stack
 
-## Learn More
+| Layer | Technology |
+|-------|-----------|
+| Storage | Walrus Protocol (Sui) |
+| Blockchain | Sui Mainnet |
+| RPC & Data API | Tatum |
+| AI Agent | Claude (Anthropic) |
+| Frontend | React |
+| Backend | Node.js + Express |
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Getting Started
 
-### Code Splitting
+### Prerequisites
+- Node.js
+- Tatum API key
+- Anthropic API key
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Installation
 
-### Analyzing the Bundle Size
+```bash
+git clone https://github.com/amaylvia-gitseries/creda
+cd creda
+npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Environment Variables
 
-### Making a Progressive Web App
+Create a `.env` file:
+REACT_APP_TATUM_API_KEY=your_tatum_api_key
+REACT_APP_ANTHROPIC_API_KEY=your_anthropic_api_key
+### Run
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```bash
+# Terminal 1 - Backend
+node server.js
 
-### Advanced Configuration
+# Terminal 2 - Frontend
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+App runs on `localhost:3000`
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Live Backend
+https://creda-backend-1rcx.onrender.com
+---
 
-### `npm run build` fails to minify
+## Demo Flow
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Visit the app → Creda landing page
+2. Click **Publish Post** → enter wallet, title, announcement
+3. Post stored on Walrus → Blob ID returned
+4. Click **View Feed** → see verified posts
+5. Click **Verify Wallet →** → full wallet profile + AI analysis
+
+---
+
+Built for the Tatum x Walrus Hackathon 2026
+Powered by Walrus · Sui · Tatum · Anthropic
