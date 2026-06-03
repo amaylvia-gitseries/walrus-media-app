@@ -7,7 +7,7 @@ export async function publishPost(title, content, walletAddress) {
     platform: "WalrusMedia"
   };
 
-  const response = await fetch('http://localhost:3001/publish', {
+  const response = await fetch('https://creda-backend-1rcx.onrender.com', {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(post)
@@ -20,14 +20,14 @@ export async function publishPost(title, content, walletAddress) {
 }
 
 export async function getPost(blobId) {
-  const response = await fetch(`http://localhost:3001/get/${blobId}`);
+  const response = await fetch(`https://creda-backend-1rcx.onrender.com/get/${blobId}`);
   const text = await response.text();
   return JSON.parse(text);
 }
 export async function getPostsByWallet(walletAddress) {
   try {
     const response = await fetch(
-      `http://localhost:3001/posts/${walletAddress}`
+      `https://creda-backend-1rcx.onrender.com/posts/${walletAddress}`
     );
     const text = await response.text();
     return JSON.parse(text);

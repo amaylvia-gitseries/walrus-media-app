@@ -86,7 +86,7 @@ function FeedPage() {
   const [loaded, setLoaded] = useState(false);
 
   React.useEffect(() => {
-    fetch('http://localhost:3001/posts')
+    fetch('https://creda-backend-1rcx.onrender.com')
       .then(r => r.json())
       .then(data => { setPosts(data); setLoaded(true); })
       .catch(() => setLoaded(true));
