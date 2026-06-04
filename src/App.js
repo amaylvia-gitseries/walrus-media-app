@@ -111,7 +111,7 @@ function FeedPage() {
           <div className="verified-badge">
             ✅ Verified Sui Wallet | {post.author?.slice(0,6)}...{post.author?.slice(-4)} | {new Date(post.timestamp).toLocaleString()}
           </div>
-          <a className="verify-link" href={`/verify/${post.walletAddress}`}>🔍 Verify Wallet →</a>
+          <a className="verify-link" href={`/verify/${post.author}`}>🔍 Verify Wallet →</a>
         </div>
       ))}
     </div>
