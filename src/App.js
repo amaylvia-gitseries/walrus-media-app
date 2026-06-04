@@ -83,7 +83,6 @@ function PublishPage() {
 function FeedPage() {
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
-  console.log('post:', post)
   const [loaded, setLoaded] = useState(false);
 
   React.useEffect(() => {
