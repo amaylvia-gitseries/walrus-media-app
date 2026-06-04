@@ -18,6 +18,7 @@ export default function VerifyPage() {
       return;
     }
     loadWalletData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [walletAddress]);
 
   async function loadWalletData() {
