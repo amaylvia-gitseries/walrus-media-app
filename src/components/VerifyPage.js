@@ -19,6 +19,7 @@ export default function VerifyPage() {
         ]);
         setWallet(walletData);
         setHistory(txHistory?.data || []);
+        console.log('History data', JSON.stringify(txHistory));
         console.log('Tatum response:', JSON.stringify(txHistory));
         await analyzeWallet(walletAddress, txHistory?.data || []);
       } catch (e) {
