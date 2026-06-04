@@ -83,6 +83,7 @@ function PublishPage() {
 function FeedPage() {
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
+  console.log('post:', post)
   const [loaded, setLoaded] = useState(false);
 
   React.useEffect(() => {
@@ -111,7 +112,7 @@ function FeedPage() {
           <div className="verified-badge">
             ✅ Verified Sui Wallet | {post.author?.slice(0,6)}...{post.author?.slice(-4)} | {new Date(post.timestamp).toLocaleString()}
           </div>
-          <a className="verify-link" href={`/verify/${post.author}`}>🔍 Verify Wallet →</a>
+          <a className="verify-link" href={`/verify/${post.walletAddress}`}>🔍 Verify Wallet →</a>
         </div>
       ))}
     </div>
